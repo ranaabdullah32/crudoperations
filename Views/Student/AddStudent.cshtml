@@ -1,0 +1,54 @@
+﻿@model List<StudentModel>
+@{
+}
+
+
+ <h1 style="text-align:center ">Crud Operations </h1>
+ <hr style="color:brown"/>
+ <h2  style="text-align:center; color:green">Please Enter Your Data </h2>
+   <form asp-action="AddStudent"  style="text-align:center ; ">
+       <input name="Id" size="20" type="text" placeholder="Enter Your Id"/><br /><br />
+       <input name="Name" size="50" type="text" placeholder="Enter Your Name"/><br /><br />
+       <input name="Email" size="50"  type="email" placeholder="Enter Your Email"/><br /><br />
+       
+       <input type="submit" style="background-color:green"/>
+       <hr style="color:brown"/>
+   </form>
+   <br /><br />
+   <table style="width:100%">
+       <hr style="color:goldenrod"/>
+       <tr>
+            <h1 style="text-align:center ; color:red">Your Submit Data</h1>
+           
+           <th style="border:3px solid; width:max-content ; text-align:center">User ID</th>
+           <th style="border:3px solid; width:max-content ; text-align:center" >User Name</th>
+           <th style="border:3px solid; width:max-content ; text-align:center">User Email</th>
+              <th style="border:3px solid; width:max-content ; text-align:center">Edit</th>
+           <th style="border:3px solid; width:max-content; text-align:center">Delete</th>
+          
+       </tr>
+
+        @foreach(StudentModel item in Model)
+    {   
+            
+        <tr>
+       
+            <input type="hidden" name="Id" />
+            <td style="border:3px solid ; text-align:center">@item.Id</td>
+           <td style="border:3px solid ; text-align:center">@item.Name</td>
+       
+            <td style="border:3px solid ; text-align:center">@item.Email</td>
+            <td style="border:3px solid ; text-align:center">
+                <a style="text-decoration:none; color:blue" asp-action="Update" asp-route-Id=@item.Id>Edit</a>
+               
+            </td>
+            <td style="border:3px solid ; text-align:center">
+
+                 <a style="text-decoration:none; color:red" asp-action="DeleteRecord" asp-route-Id=@item.Id>Delete</a>
+            </td>
+           
+        </tr>
+ <hr style="color:goldenrod"/>
+    }
+
+</table>
